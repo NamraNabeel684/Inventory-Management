@@ -15,10 +15,8 @@
 ## Project Features
 The system includes the following features:
 - User registration and login
-- Secure user authentication using PHP sessions
 - Dashboard with inventory overview
-- Display of total products
-- Display of total categories
+- Display of statistics
 - Low stock product monitoring
 - Recent inventory activity displayed on the dashboard
 - Add new product functionality
@@ -30,64 +28,29 @@ The system includes the following features:
 - Inventory activity tracking
 - User logout functionality
 - Responsive and user-friendly interface
-- 
-## Project Structure
-twisted-threads-inventory/
-│
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   │
-│   ├── js/
-│   │   └── script.js
-│   │
-│   └── images/
-│       └── logo.png
-│
-├── config/
-│   └── database.php
-│
-├── includes/
-│   ├── auth_check.php
-│   ├── header.php
-│   └── footer.php
-│
-├── uploads/
-│   └── Product images are stored here
-│
-├── index.php
-├── login.php
-├── register.php
-├── logout.php
-├── dashboard.php
-├── products.php
-├── add_product.php
-├── edit_product.php
-├── delete_product.php
-├── categories.php
-├── inventory.php
-└── activity.php
 ## Database Setup
-Create a MySQL database named:
+1. Create a MySQL database:
 CREATE DATABASE twisted_threads_inventory;
-Then select the database:
+2. Select the database:
 USE twisted_threads_inventory;
-Create the required tables for:
-Users
-Categories
-Products
-Inventory Activity
-Example structure:
+3. Create the required tables for:
+* Users
+* Categories
+* Products
+* Inventory Activity
+Example table structure for `inventory_activity`:
 CREATE TABLE inventory_activity (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     activity_type VARCHAR(100) NOT NULL,
     description VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
     FOREIGN KEY (user_id)
     REFERENCES users(id)
     ON DELETE SET NULL
 );
+Make sure all required tables are created before running the project. The database name should also match the configuration in `config/database.php`.
 ## How to Run the Project
 1. Install **PHP, MySQL, and Visual Studio Code**.
 2. Open the `twisted-threads-inventory` folder in VS Code.
